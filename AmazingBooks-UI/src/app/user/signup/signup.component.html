@@ -1,0 +1,186 @@
+<div>
+  <form
+    #signupForm="ngForm"
+    (ngSubmit)="CreateUser()"
+    class="w-50 p-3 card p-3 .bg-primary-subtle text-dark-emphasis"
+  >
+    <Fieldset>
+      <legend>Sign up Form</legend>
+      <div>
+        <label class="form-label"><span class="required">*</span>Name</label>
+        <input
+          type="text"
+          [(ngModel)]="user.name"
+          #username="ngModel"
+          name="username"
+          class="form-control"
+          required
+        />
+      </div>
+      <div>
+        <label class="form-label"><span class="required">*</span>Email</label>
+        <input
+          type="email"
+          [(ngModel)]="user.email"
+          #email="ngModel"
+          name="email"
+          required
+          class="form-control"
+          email
+        />
+      </div>
+      <div>
+        <label class="form-label"><span class="required">*</span> Phone</label>
+        <input
+          type="text"
+          [(ngModel)]="user.phone"
+          name="phone"
+          #phone="ngModel"
+          class="form-control"
+          pattern="[0-9]{10}"
+          required
+        />
+      </div>
+      <div>
+        <label class="form-label"
+          ><span class="required">*</span>Login Id</label
+        >
+        <input
+          type="text"
+          [(ngModel)]="user.loginId"
+          #loginId="ngModel"
+          name="loginId"
+          class="form-control"
+          required
+          minlength="8"
+        />
+      </div>
+      <div>
+        <label class="form-label"
+          ><span class="required">*</span>Password</label
+        >
+        <input
+          type="password"
+          [(ngModel)]="user.password"
+          #password="ngModel"
+          name="password"
+          class="form-control"
+          required
+          minlength="10"
+        />
+      </div>
+      <div>
+        <label class="form-label"
+          ><span class="required">*</span>Confirm Password</label
+        >
+        <input
+          type="password"
+          name="confirmPassword"
+          #confirmPassword="ngModel"
+          class="form-control"
+          ngModel
+          required
+        />
+      </div>
+
+      <p
+        class="errors"
+        *ngIf="
+            (username.touched ) && username.errors?.['required']
+          "
+      >
+        User name is required
+      </p>
+      <p
+        class="errors"
+        *ngIf="
+            (email.touched ) && email.errors?.['required']
+          "
+      >
+        Email is required
+      </p>
+      <p
+        class="errors"
+        *ngIf="
+            (email.touched ) && email.errors?.['email']
+          "
+      >
+        Invalid email id
+      </p>
+      <p
+        class="errors"
+        *ngIf="
+            (phone.touched ) && phone.errors?.['pattern']
+          "
+      >
+        Invalid Phone number
+      </p>
+      <p
+        class="errors"
+        *ngIf="
+            (phone.touched ) && phone.errors?.['required']
+          "
+      >
+        Phone# is required
+      </p>
+      <p
+        class="errors"
+        *ngIf="
+            (loginId.touched ) && loginId.errors?.['required']
+          "
+      >
+        Login Id is required
+      </p>
+      <p
+        class="errors"
+        *ngIf="
+            (loginId.touched ) && loginId.errors?.['minlength']
+          "
+      >
+        Login Id length should be atleast 8 character
+      </p>
+      <p
+        class="errors"
+        *ngIf="
+            (password.touched ) && password.errors?.['required']
+          "
+      >
+        Password is required
+      </p>
+      <p
+        class="errors"
+        *ngIf="
+            (password.touched ) && password.errors?.['minlength']
+          "
+      >
+        Password length should be atleast 10 character
+      </p>
+
+      <p
+        class="errors"
+        *ngIf="
+            (confirmPassword.touched ) && confirmPassword.errors?.['required']
+          "
+      >
+        Re-enter Password
+      </p>
+      <p
+        class="errors"
+        *ngIf="
+          confirmPassword.touched && confirmPassword.value != password.value
+        "
+      >
+        Passwords doesnot match
+      </p>
+      <p *ngIf="errorMessage" class="errors">
+        {{ errorMessage }}
+      </p>
+      <input
+        type="submit"
+        [disabled]="!signupForm.valid"
+        class="btn btn-outline-dark"
+      /><button (click)="Cancel()" class="btn btn-outline-dark">Cancel</button>
+      <p>Already have an account? <a routerLink="/login">Log in </a></p>
+    </Fieldset>
+  </form>
+</div>

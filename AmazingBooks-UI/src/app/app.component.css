@@ -1,0 +1,55 @@
+.location {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  display: flex;
+  margin: 0px;
+  width: 250px;
+  right: 200px;
+}
+
+.location img {
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
+  margin: 0px;
+}
+
+.location p {
+  margin: 0px;
+  font-size: small;
+}
+
+.location:hover {
+  border: 1px solid white;
+}
+
+.fixed-sm-left {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: small;
+}
+
+.navbar,
+nav {
+  margin: 0px;
+  padding: 0px;
+}
+
+.hidden-div {
+  position: absolute;
+  top: 200px;
+  right: 40%;
+  z-index: 51;
+  width: 300px;
+  margin: 20px;
+  padding: 20px;
+  background-color: white;
+  text-align: center;
+  left: 40%;
+}
+
+.nav-link:hover {
+  border: 1px solid white;
+}

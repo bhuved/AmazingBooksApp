@@ -1,0 +1,74 @@
+<div>
+  <form
+    #loginForm="ngForm"
+    (ngSubmit)="userLogin(loginForm)"
+    class="w-25 p-3 card .bg-primary-subtle text-dark-emphasis"
+  >
+    <fieldset>
+      <legend>Login Form</legend>
+      <div>
+        <label class="form-label"
+          ><span class="required">*</span>Login Id</label
+        >
+        <input
+          type="text"
+          [(ngModel)]="user.loginId"
+          name="loginId"
+          #loginId="ngModel"
+          class="form-control"
+          required
+        />
+      </div>
+      <div>
+        <label class="form-label"
+          ><span class="required">*</span>Password</label
+        >
+        <input
+          type="password"
+          [(ngModel)]="user.password"
+          name="password"
+          #password="ngModel"
+          class="form-control"
+          required
+        />
+      </div>
+      <p
+        class="errors"
+        *ngIf="
+            (loginId.touched ) && loginId.errors?.['required']
+          "
+      >
+        Login Id is required
+      </p>
+      <p
+        class="errors"
+        *ngIf="
+            (password.touched ) && password.errors?.['required']
+          "
+      >
+        Password is required
+      </p>
+      <p *ngIf="message" class="success">
+        {{ message }}
+      </p>
+      <p *ngIf="errorMessage" class="errors">
+        {{ errorMessage }}
+      </p>
+      <button
+        type="submit"
+        [disabled]="!loginForm.valid"
+        class="btn btn-outline-dark"
+      >
+        Login
+      </button>
+      <button
+        type="button"
+        (click)="Cancel(loginForm)"
+        class="btn btn-outline-dark"
+      >
+        Cancel
+      </button>
+      <p>Not a registered user? <a routerLink="/signup">Sign up now</a></p>
+    </fieldset>
+  </form>
+</div>
